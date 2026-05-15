@@ -34,12 +34,12 @@ const SOURCES = [
   // Latin America
   { name: "teleSUR",            region: "latam",    url: "https://www.telesurenglish.net/rss/" },
   { name: "Mercopress",         region: "latam",    url: "https://en.mercopress.com/rss" },
-  { name: "Buenos Aires Herald",region: "latam",    url: "https://buenosairesherald.com/feed" },
+  { name: "Buenos Aires Times", region: "latam",    url: "https://www.batimes.com.ar/feed" },
   { name: "Rio Times",          region: "latam",    url: "https://riotimesonline.com/feed/" },
   // Alternative / Global South perspectives
   { name: "IPS News",           region: "global",   url: "https://www.ipsnews.net/feed/" },
   { name: "The Conversation",   region: "global",   url: "https://theconversation.com/global/articles.atom" },
-  { name: "Global Times CN",    region: "china",    url: "https://www.globaltimes.cn/rss/outbrain.xml" },
+  { name: "RFA English",         region: "global",   url: "https://www.rfa.org/english/rss2.xml" },
 ];
 
 // ── Date utils ───────────────────────────────────────────────────────────────
@@ -105,7 +105,7 @@ function strip(s) {
 async function fetchSource(source) {
   try {
     const res = await fetch(source.url, {
-      headers: { "User-Agent": "rss-archive/1.0 (+https://github.com)" },
+      headers: { "User-Agent": "Mozilla/5.0 (compatible; RSS-Reader/2.0; +https://github.com/chemodakov/rss-archive)" },
       signal: AbortSignal.timeout(8000),
     });
     if (!res.ok) return [];
